@@ -17,7 +17,7 @@ class FrontYard(Survival):
     def __init__(self, is_night=False):
         super().__init__()
 
-        # @override 按键(8) - 前四个键炸前场 后四个键炸后场
+        # @override 按键(6) - 前三个键炸前场 后三个键炸后场
         self.keys = (
             keyboard.KeyCode(char='1'),
             keyboard.KeyCode(char='2'),
@@ -80,7 +80,7 @@ class FrontYard(Survival):
 
     # @override 发炮函数
     def launch_cannon_pair(self, i):
-        n_pair = i % 3  # 第几组炮 0~3
+        n_pair = i % 3  # 第几组炮 0~2
         n_col = 1 if i < 3 else 0  # 落点在前场还是后场
 
         c1 = n_pair * 2  # cannon1

@@ -6,7 +6,7 @@
 """
 
 import os
-from pynput import mouse, keyboard
+from pynput import keyboard
 from FrontYard import FrontYard
 from BackYard import BackYard
 from Roof import Roof

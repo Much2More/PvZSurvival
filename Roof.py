@@ -73,7 +73,7 @@ class Roof(Survival):
 
     # @override 发炮函数
     def launch_cannon_pair(self, i):
-        n_pair = i % 5  # 第几组炮 0~3
+        n_pair = i % 5  # 第几组炮 0~4
         n_col = 1 if i < 5 else 0  # 落点在前场还是后场
 
         self.mouse_controller.position = Survival.get_display_pos((self.cols[0], self.rows_l[n_pair]))
