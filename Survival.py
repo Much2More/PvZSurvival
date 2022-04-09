@@ -64,6 +64,12 @@ class Survival:
             keyboard.Key.alt_l,
         }
 
+        # Ignore other keyboard input if one of these keys is pressed.
+        self.keys_modifier_ignore = {
+            keyboard.Key.cmd,  # Win key.
+            keyboard.Key.ctrl_l,
+        }
+
         # 通过 self.main.keys_pressed 获取已经按下的键集合
         self.main = None
 
@@ -81,8 +87,12 @@ class Survival:
         self.main.keys_pressed.add(key)
         # print('keys pressed: ' + str(self.main.keys_pressed))
 
+        # Ignore input.
+        if self.keys_modifier_ignore & self.main.keys_pressed:
+            return
+
         # 停止按键
-        if self.keys_halt <= self.main.keys_pressed:
+        if self.keys_halt == self.main.keys_pressed:
             print('halt')
             return False
 
