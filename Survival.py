@@ -161,10 +161,9 @@ class Survival:
     @staticmethod
     def get_windows_zoom_scale(window):
         client_rect = win32gui.GetClientRect(window)
-        width = client_rect[2]
-        width_scale = 800
-        # print('width:', width, 'width_scale:', width_scale)
-        return width / width_scale
+        height = client_rect[3]
+        standard_height = 600
+        return height / standard_height
 
         # # [Obsolete] Even when zoom=1.25 (width: 1920, width_scale: 1536),
         # # the client_rect is still (0, 0, 800, 600).
@@ -173,6 +172,7 @@ class Survival:
         # dc = user32.GetDC(None)
         # width = gdi32.GetDeviceCaps(dc, 118)  # 原始分辨率的宽度
         # width_scale = gdi32.GetDeviceCaps(dc, 8)  # 分辨率缩放后的宽度
+        # print('width:', width, 'width_scale:', width_scale)
 
     # 模仿植物卡片坐标偏移
     @staticmethod
@@ -187,7 +187,13 @@ class Survival:
         header_height = window_rect[3] - window_rect[1] - client_rect[3] - border_width * 2
         # print('window_rect:', window_rect, 'client_rect:', client_rect,
         #       'border_width:', border_width, 'header_height:', header_height)
-        return window_rect[0] + border_width, window_rect[1] + border_width + header_height
+
+        # Black bars will occur when it is fullscreen with ratio > 4:3.
+        black_bar_width = 0
+        if client_rect[2] * 3 > 4 * client_rect[3]:
+            desired_width = client_rect[3] * 4 // 3
+            black_bar_width = (client_rect[2] - desired_width) // 2
+        return window_rect[0] + border_width + black_bar_width, window_rect[1] + border_width + header_height
 
     @staticmethod
     def get_display_pos(pos):
