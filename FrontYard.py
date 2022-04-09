@@ -2,8 +2,8 @@
 """
 脚本功能：植物大战僵尸生存模式前院 - 白天后置六炮 | 黑夜快六炮
 创建日期：2021-4-11
-说明：1 2 3 和炮弹的左右顺序对应，炸前场
-     q w e 炸后场
+说明：2 3 4 炸前场
+     W E R 炸后场
      黑夜快六炮每次发完三对炮后，使用毁灭菇、模仿毁灭菇、寒冰菇调整节奏，作为第四炮
 """
 
@@ -19,12 +19,12 @@ class FrontYard(Survival):
 
         # @override 按键(6) - 前三个键炸前场 后三个键炸后场
         self.keys = (
-            keyboard.KeyCode(char='1'),
             keyboard.KeyCode(char='2'),
             keyboard.KeyCode(char='3'),
-            keyboard.KeyCode(char='q'),
+            keyboard.KeyCode(char='4'),
             keyboard.KeyCode(char='w'),
             keyboard.KeyCode(char='e'),
+            keyboard.KeyCode(char='r'),
         )
 
         # @override 选卡(10)
