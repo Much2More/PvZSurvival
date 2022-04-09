@@ -58,7 +58,7 @@ class BackYard(Survival):
         self.rows = tuple(108 + i * 87 for i in range(0, 6))
 
         # 列：0 1 2 - 从左到右三列炮, 3 4 - 落点
-        self.cols = (166, 300, 426, 613, 686, )
+        self.cols = (166, 300, 460, 613, 686, )
 
         # Cannons 坐标
         self.cannons = (
