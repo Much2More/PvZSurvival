@@ -87,14 +87,14 @@ class Survival:
         self.main.keys_pressed.add(key)
         # print('keys pressed: ' + str(self.main.keys_pressed))
 
+        # 停止按键
+        if self.keys_halt <= self.main.keys_pressed:
+            print('halt')
+            return False
+
         # Ignore input.
         if self.keys_modifier_ignore & self.main.keys_pressed:
             return
-
-        # 停止按键
-        if self.keys_halt == self.main.keys_pressed:
-            print('halt')
-            return False
 
         # 游戏窗口
         game_window = win32gui.GetForegroundWindow()
